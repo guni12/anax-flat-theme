@@ -1,0 +1,114 @@
+/**
+ * Regions, basics to show off the regions.
+ */
+.wrap-all {
+    margin: 0 auto;
+    max-width: 950px;
+}
+
+.footer-column {
+    float: left;
+    width: 31%;
+    padding: 1%;
+    img {
+        max-width: 30%;
+    }
+}
+
+.footer-column-3 {
+    p img {
+        max-width: 30%;
+    }
+}
+
+.footer-column-wrapper {
+    overflow: auto;
+}
+
+.sidebar {
+    width: 33%;
+    float: left;
+    padding: 1%;
+}
+
+.main .has-sidebar {
+    width: 67%;
+    float: left;
+    padding: 1%;
+}
+
+.outer-wrap-footer {
+    clear: both;
+    margin-bottom: 22px;
+}
+
+.site-footer {
+    text-align: center;
+    
+    ul {
+        margin: 0;
+        padding: 0;
+        list-type: none;
+    }
+
+    li {
+        display: inline;
+    }
+}
+
+.footer-column {
+    text-align: center;
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+}
+
+.next-previous {
+    .next,
+    .previous {
+        width: 50%;
+    }
+    
+    .next {
+        float: right;
+        text-align: right;
+    }
+}
+
+.breadcrumb {
+    margin-bottom: 22px;
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+    
+    li {
+        display: inline;
+
+        &::after {
+            content: " » ";
+        }
+    }
+}
+
+.site-header {
+    position: relative;
+}
+
+@media screen and (max-width: 750px) {
+    .sidebar {
+        //width: 100%;
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    .footer-column {
+        width: 100%;
+    }
+}
