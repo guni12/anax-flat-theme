@@ -15,58 +15,34 @@
     color: @navbarItemColor;
 }
 
-
-// Size each item in the header
-.site-logo-text,
-.navbar2,
-.profile {
-    float: left;
-}
-
-
-.site-logo-text {
-    width: 25%;
-}
-
-.navbar2 {
-    width: 65%;
-}
-
-.profile {
-    width: 10%;
-}
+@site-height: 50px;
 
 .site-header {
-    height: 80px;
-}
-
-// Site title
-.site-logo-text {
-    font-size: 2em;
-    
-    a {
-        text-decoration: none;
-    }
-}
-
-@media screen and (max-width: 750px) {
-    .navbar2 {
-        font-size: @maxButtonFontSize * 0.4;
-        width: 60%;
-    }
+    display: flex;
+    flex-flow: row wrap;
+    .column(@columns);
+    min-height: @site-height;
     .site-logo-text {
-        font-size: @maxButtonFontSize * 0.8;
-        width: 30%;
+        .column((@columns / 4) - (@columns / 24));
+        font-size: 1.8em;
+        a {
+            color: purple;
+            text-decoration: none;
+        }
+    }
+    .navbar2 {
+        .column((@columns / 4) * 3);
+    }
+    .profile {
+        .column(@columns / 24);
     }
 }
 
-@media screen and (max-width: 600px) {
-    .site-logo-text {
-        width: 90%;
-        font-size: @maxButtonFontSize;
-    }
-     
-    .navbar2 {
-        display: none;
+.profile {
+    .rm-swipe-right {
+        background-color: "";
+        ul {
+            list-style-type: none;
+        }
     }
 }
