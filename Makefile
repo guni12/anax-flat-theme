@@ -26,7 +26,10 @@ WHERE-AM-I = $(CURDIR)/$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 THIS_MAKEFILE := $(call WHERE-AM-I)
 
 # Echo some nice helptext based on the target comment
-HELPTEXT = $(ECHO) "$(ACTION)--->" `egrep "^\# target: $(1) " $(THIS_MAKEFILE) | sed "s/\# target: $(1)[ ]*-[ ]* / /g"` "$(NO_COLOR)"
+HELPTEXT = $(ECHO) "$(ACTION)--->" `egrep "^\# target: $(1) " "$(THIS_MAKEFILE)" | sed "s/\# target: $(1)[ ]*-[ ]* / /g"` "$(NO_COLOR)"
+
+# Check version  and path to command and display on one line
+CHECK_VERSION = printf "%-15s %-10s %s\n" "`basename $(1)`" "`$(1) --version $(2)`" "`which $(1)`"
 
 
 
@@ -36,11 +39,15 @@ VENDORBIN 	= vendor/bin
 NPMBIN		= node_modules/.bin
 
 # LESS and CSS
-LESS 		 	= style.less modules.less vgrid.less #style1.less #style2.less
+LESS 		 	= style.less base.less light.less dark.less triad.less color.less tinycolor.less typo.less
 LESS_MODULES	= modules/
 LESS_OPTIONS 	= --strict-imports --include-path=$(LESS_MODULES)
 CSSLINT_OPTIONS = --quiet
 FONT_AWESOME 	= modules/font-awesome/fonts/
+
+CSSLINT   := $(NPMBIN)/csslint
+STYLELINT := $(NPMBIN)/stylelint
+LESSC     := $(NPMBIN)/lessc
 
 
 
@@ -80,42 +87,16 @@ clean-all: clean
 
 
 
-# target: less               - Compile and minify the stylesheet(s).
-.PHONY: less
-less: prepare-build
-	@$(call HELPTEXT,$@)
-	
-	$(foreach file, $(LESS), $(NPMBIN)/lessc $(LESS_OPTIONS) $(file) build/css/$(basename $(file)).css; )
-	$(foreach file, $(LESS), $(NPMBIN)/lessc --clean-css $(LESS_OPTIONS) $(file) build/css/$(basename $(file)).min.css; )
-
-	cp build/css/*.min.css htdocs/css/
-
-
-
-# target: less-install       - Installing the stylesheet(s).
-.PHONY: less-install
-less-install: less
-	@$(call HELPTEXT,$@)
-	if [ -d ../htdocs/css/ ]; then cp build/css/*.min.css ../htdocs/css/; fi
-	if [ -d ../htdocs/js/ ]; then rsync -a js/ ../htdocs/js/; fi
-
-
-
-# target: less-lint          - Lint the less stylesheet(s).
-.PHONY: less-lint
-less-lint: less
+# target: check              - Check installed tools.
+.PHONY:  check
+check: npm-version
 	@$(call HELPTEXT,$@)
 
-	$(foreach file, $(LESS), $(NPMBIN)/lessc --lint $(LESS_OPTIONS) $(file) > build/lint/$(file); )
-	- $(foreach file, $(LESS), $(NPMBIN)/csslint $(CSSLINT_OPTIONS) build/css/$(basename $(file)).css > build/lint/$(basename $(file)).css; )
-
-	ls -l build/lint/
 
 
-
-# target: test               - Execute all tests.
-.PHONY: test
-test: less-lint
+# target: install            - Install tools neded (including dev).
+.PHONY: install
+install: npm-install
 	@$(call HELPTEXT,$@)
 
 
@@ -128,10 +109,50 @@ update:
 	git pull --recurse-submodules && git submodule foreach git pull origin master
 
 
-# target: npm-install        - Install npm development packages.
-# target: npm-update         - Update npm development packages.
-# target: npm-version        - Display version for each package.
-.PHONY: npm-install npm-update npm-version
+
+# target: test               - Execute all tests.
+.PHONY: test
+test: less-lint
+	@$(call HELPTEXT,$@)
+
+
+
+# target: less               - Compile and minify the stylesheet(s).
+# target: less-install       - Installing the stylesheet(s).
+# target: less-lint          - Lint the less stylesheet(s).
+.PHONY: less less-install less-lint
+less: prepare-build
+	@$(call HELPTEXT,$@)
+	
+	$(foreach file, $(LESS), $(LESSC) $(LESS_OPTIONS) $(file) build/css/$(basename $(file)).css; )
+	$(foreach file, $(LESS), $(LESSC) --clean-css $(LESS_OPTIONS) $(file) build/css/$(basename $(file)).min.css; )
+
+	cp build/css/*.min.css htdocs/css/
+
+
+
+less-install: less
+	@$(call HELPTEXT,$@)
+	if [ -d ../htdocs/css/ ]; then cp build/css/*.min.css ../htdocs/css/; fi
+	if [ -d ../htdocs/js/ ]; then rsync -a js/ ../htdocs/js/; fi
+
+
+
+less-lint: less
+	@$(call HELPTEXT,$@)
+
+	$(foreach file, $(LESS), $(LESSC) --lint $(LESS_OPTIONS) $(file) > build/lint/$(file); )
+	- $(foreach file, $(LESS), $(CSSLINT) $(CSSLINT_OPTIONS) build/css/$(basename $(file)).css > build/lint/$(basename $(file)).csslint.css; )
+	- $(foreach file, $(LESS), $(STYLELINT) build/css/$(basename $(file)).css > build/lint/$(basename $(file)).stylelint.css; )
+
+	ls -l build/lint/
+
+
+
+# target: npm-install        - Install npm development npm packages.
+# target: npm-update         - Update npm development npm packages.
+# target: npm-version        - Display version for each npm package.
+.PHONY: npm-installl npm-update npm-version
 npm-install: 
 	@$(call HELPTEXT,$@)
 	npm install
@@ -142,38 +163,8 @@ npm-update:
 
 npm-version:
 	@$(call HELPTEXT,$@)
-	$(NPMBIN)/lessc --version
-	$(NPMBIN)/csslint --version
-
-# target: upgrade-normalize       - Upgrade LESS module - Normalize.
-.PHONY: upgrade-normalize
-upgrade-normalize:
-	@$(call HELPTEXT,$@)
-
-    # Normalizer
-	wget --quiet https://necolas.github.io/normalize.css/latest/normalize.css -O $(LESS_MODULES)/normalize.less
-
-
-# target: upgrade-responsive-menu - Upgrade LESS module - Responsive menu
-.PHONY: upgrade-responsive-menu
-upgrade-responsive-menu:
-	@$(call HELPTEXT,$@)
-
-	# Responsive-menu
-	wget --quiet https://raw.githubusercontent.com/mosbth/responsive-menu/master/src/less/responsive-menu.less -O $(LESS_MODULES)/responsive-menu.less
-	wget --quiet https://raw.githubusercontent.com/mosbth/responsive-menu/master/src/js/responsive-menu.js -O js/responsive-menu.js
-
-
-# target: upgrade-grid 		- Upgrade LESS module - Grid
-.PHONY: upgrade-grid
-upgrade-grid:
-	@$(call HELPTEXT,$@)
-
-	# Grid-system
-	wget --quiet https://raw.githubusercontent.com/dbwebb-se/design/master/example/grid/fluid/less/grid-flex.less -O $(LESS_MODULES)/grid-flex.less
-	wget --quiet https://raw.githubusercontent.com/dbwebb-se/design/master/example/grid/fluid/less/grid-float.less -O $(LESS_MODULES)/grid-float.less
-
-# target: upgrade                 - Upgrade external LESS modules.
-.PHONY: upgrade
-upgrade: upgrade-normalize upgrade-responsive-menu
-	@$(call HELPTEXT,$@)
+	@$(call CHECK_VERSION, node)
+	@$(call CHECK_VERSION, npm)
+	@$(call CHECK_VERSION, $(CSSLINT))
+	@$(call CHECK_VERSION, $(STYLELINT))
+	@$(call CHECK_VERSION, $(LESSC), | cut -d ' ' -f 2)

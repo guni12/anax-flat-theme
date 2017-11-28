@@ -1,0 +1,109 @@
+/** 
+* Anax Flat theme.
+*/
+@import url(base.less);
+
+@bcol: #d2c33e;
+@blue: #70dcbd;
+@red: #d2263e;
+@dark: #196751;
+
+@light: #b5cf85;
+
+html {
+    background-color: @bcol;   
+    font-family: "Montserrat", sans-serif;
+    font-style: italic;
+}
+
+h1, h2, h3 {
+    font-family: "Della Respira", serif;
+    font-style: normal;
+}
+
+h4, h5, h6{
+    font-family: "Tangerine", serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.rm-desktop li {
+    font-family: "Tillana", sans-serif;
+    font-style: normal;
+    .selected a{
+        color: pink;
+    }
+}
+
+code {
+    font-family: "Inconsolata", monospace;
+}
+
+@navbarItemColor: @red;
+@navbarMenuButtonClickedColor: @navbarItemColor;
+
+.important {
+   color: @navbarItemColor;
+}
+
+.img-typo-test {
+    .box(3px, @navbarItemColor);
+}
+
+.article.mark-border {
+    border: 3px solid #dfd1b2;
+    overflow: auto;
+    padding: 2em;   
+}
+
+.site-header {
+    .site-logo-text {
+        a {
+            color: @navbarItemColor;
+            font-family: "Rancho";
+            text-shadow: 4px 4px 4px @dark;
+        }
+    }
+}
+
+.footer-column-wrapper {
+    background-color: @bcol;
+    opacity: 1;
+}
+
+.site-footer {
+    background-color: @dark;
+    background-color: #E9E939;
+    color: #e9c539;
+    border: solid 1px @light;
+    p {
+        margin: 0;
+    }
+}
+
+.footer-column {
+    .footer-column-1.block, .footer-column-2.block, .footer-column-3.block {
+        background-color: #e9c539;
+    }
+}
+
+ul#rm-menu.rm-clicked {
+    background-color: #98c544;
+    opacity: 0.9;
+    a {
+        color: @navbarItemColor;
+    }
+}
+
+ul#rm-desktop {
+    li.selected {
+        a {
+            color: @blue;
+            &:hover {
+                background-color: @light;
+            }
+        }        
+    }
+}
+
+@navbarItemSelectedColor: @light;

@@ -7,14 +7,11 @@
  * be override modules/some-module.less. This is useful when several themes
  * the same modules.
  */
-//@import url(some-module.less);
-@import url(normalize.less);
-//@import url(regions.less);
-@import url(responsive-menu.less);
-@import url(header.less);
-@import url(mystyle.less);
-@import url(awsome.less);
-@import url(grid-flex.less);
-//@import url(grid-float.less);
-@import url(layout.less);
-@import url(typography.less);
+@import url(base.less);
+
+.article.mark-border {
+    border: 3px solid orange;
+    overflow: auto;
+    padding: 2em;   
+}
+

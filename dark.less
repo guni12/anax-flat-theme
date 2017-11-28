@@ -1,0 +1,113 @@
+/** 
+* Anax Flat theme.
+*/
+@import url(base.less);
+
+@light: #b5cf85;
+@bcol: #364518;
+@blue: #a744c5;
+@dark: #292e1e;
+@navbarItemColor: #719232;
+
+html {
+    color: @light;
+    background-color: @bcol;
+    font-family: "Montserrat", sans-serif;
+    font-style: italic;
+}
+
+h1, h2, h3 {
+    font-family: "Della Respira", serif;
+    font-style: normal;
+    color: @navbarItemColor;
+}
+
+h4, h5, h6{
+    font-family: "Tangerine", serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+code {
+    font-family: "Inconsolata", monospace;
+}
+
+
+@navbarMenuButtonClickedColor: @navbarItemColor;
+
+.important {
+   color: @blue;
+}
+
+.img-typo-test {
+    .box(3px, @navbarItemColor);
+}
+
+.article.mark-border {
+    border: 3px solid @light;
+    overflow: auto;
+    padding: 2em;   
+}
+
+.route-typography {
+    color: @bcol;
+}
+
+.site-header {
+    .site-logo-text {
+        a {
+            color: @navbarItemColor;
+            font-family: "Rancho";
+            text-shadow: 4px 4px 4px @dark;
+        }
+    }
+}
+
+.footer-column-wrapper {
+    background-color: @bcol;
+    opacity: 1;
+    h1, h2, h3 {
+        color: @light;
+    }
+}
+
+.site-footer {
+    background-color: @dark;
+    color: @light;
+    border: solid 1px @light;
+    p {
+        margin: 0;
+    }
+}
+
+.footer-column {
+    .footer-column-1.block, .footer-column-2.block, .footer-column-3.block {
+        background-color: @navbarItemColor;
+    }
+}
+
+ul#rm-menu.rm-clicked {
+    background-color: #601178;
+    a {
+        color: @light;
+    }
+}
+
+a {
+    color: @blue;
+}
+
+ul#rm-desktop {
+    font-family: "Tillana", sans-serif;
+    font-style: normal;
+    li.selected {
+        a {
+            color: @blue;
+            &:hover {
+                background-color: @light;
+            }
+        }        
+    }
+}
+
+@navbarItemSelectedColor: @light;

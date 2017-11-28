@@ -1,0 +1,60 @@
+/** 
+* Anax Flat theme.
+*/
+@import url(base.less);
+
+@bcol: #d2c33e;
+@blue: #70dcbd;
+
+html {
+    background-color: @bcol;
+}
+
+@navbarItemColor: #d2263e;
+@navbarMenuButtonClickedColor: @navbarItemColor;
+
+.important {
+   color: @navbarItemColor;
+}
+
+.img-typo-test {
+    .box(3px, @navbarItemColor);
+}
+
+.article.mark-border {
+    border: 3px solid #196751;
+    overflow: auto;
+    padding: 2em;   
+}
+
+.site-header {
+    .site-logo-text {
+        a {
+            color: @navbarItemColor;
+        }
+    }
+}
+
+.footer-column-wrapper {
+    background-color: @bcol;
+    opacity: 1;
+}
+
+.site-footer {
+    background-color: #196751;
+    color: @bcol;
+}
+
+.footer-column {
+    .footer-column-1.block, .footer-column-2.block, .footer-column-3.block {
+        background-color: #2db991;
+    }
+}
+
+ul#rm-menu.rm-clicked {
+    background-color: #98c544;
+    opacity: 0.9;
+    a {
+        color: @navbarItemColor;
+    }
+}

@@ -10,7 +10,7 @@
 @navbarItemHoverBgColor:    inherit; //#666;
 
 // Menu item current/selected
-@navbarItemSelectedColor:       inherit;
+@navbarItemSelectedColor:       #444;
 @navbarItemSelectedBgColor:     inherit; 
 //@navbarItemSelectedBorderColor: darken(lime, 10%);
 
@@ -30,7 +30,7 @@
 //@navbarMenuButtonHoverBorderColor:   #333;
 
 // The menu button clicked
-@navbarMenuButtonClickedColor:          #9FB129;
+@navbarMenuButtonClickedColor:          #fff;
 @navbarMenuButtonClickedBgColor:        @navbarMenuButtonHoverBgColor;
 //@navbarMenuButtonClickedBorderColor:    lime;
 
@@ -51,7 +51,7 @@
 @maxButtonColor:            inherit;
 @maxButtonClickedColor:     @navbarMenuButtonClickedColor;
 @maxButtonSubmenuBgColor:    #444;
-@maxButtonSubmenuHoverBgColor: #ccc;
+@maxButtonSubmenuHoverBgColor: #fff;
 
 /**
  * Outer wrapper for menu
@@ -204,7 +204,7 @@ a.rm-button {
         &.rm-selected,
         &.selected-parent, // for selected descendants
         &.selected {
-            //color: @navbarItemSelectedColor; 
+            color: @navbarItemSelectedColor; 
             //background-color: @navbarItemSelectedBgColor; 
         }
 

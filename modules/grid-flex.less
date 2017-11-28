@@ -70,6 +70,15 @@
     .positive-margin();
 }
 
+.fix-padding(@col, @columns: @columns) {
+    flex: 0 0 auto;
+
+    width: @totalWidth * (((@columnWidth + @gutterWidth) * @col ) - @gutterWidth) - 2%;
+
+    .positive-margin();
+    padding: 2%;   
+}
+
 
  /**
  * Create a column spanning @col columns, but with no extra margin.

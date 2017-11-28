@@ -3,6 +3,7 @@
 @columnWidth:   30;
 @gutterWidth:   10;
 @columns:       24;
+@footerBgColor: white;
 
 .route-grid {
     .inner-wrap {
@@ -196,22 +197,6 @@
 
 ////////////////////////////////////////////////////////////
 
-.route- {
-    font-family: @fontFamilyMyriadPro;
-}
-.route-about {
-    font-family: @fontFamilyPalatino;
-}
-.route-test {
-    font-family: @fontFamilyGaramond;
-}
-.route-report {
-    font-family: @fontFamilyHelveticaNeue;
-}
-
-
-///////////////////////////////////////////////////////
-
 .wrap-all {
     margin: 0 auto;
     padding-bottom: 16px;
@@ -255,8 +240,7 @@
 }
 
 .footer-column-wrapper {
-    background-color: @navbarItemColor;
-    opacity: 0.8;
+    background-color: @footerBgColor;
 }
 
 .flash {
@@ -330,27 +314,10 @@
     flex-flow: row wrap;
     .column-add-two-gutter(@columns);
     .footer-column {
+        display: flex;
         .column(@columns / 3);
-        .footer-column-1.block {
-            .column(@columns);
-            li {
-                list-style-type: none;
-            }
-            a {
-                text-decoration: none;
-            }
-        }
-        .footer-column-2.block {
-            .column(@columns);
-            li {
-                list-style-type: none;
-            }
-            a {
-                text-decoration: none;
-            }
-        }
-        .footer-column-3.block {
-            .column(@columns);
+        .footer-column-1.block, .footer-column-2.block, .footer-column-3.block {
+            .fix-padding(@columns);
             li {
                 list-style-type: none;
             }
@@ -362,8 +329,17 @@
 }
 
 .site-footer {
+    min-height: 131px;
+    p {
+        margin: 0;
+    }
     .column-keep-gutter(@columns);
     text-align: center;
+    background-color: @footerBgColor;
+    z-index: 0;
+    img {
+        z-index: 3;
+    }
 }
 
 .content {
@@ -474,7 +450,7 @@
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 760px) {
     .main {
         .column(@columns);
         .push(0);
@@ -516,7 +492,7 @@
 }
 
 .img-typo-test {
-    .box(3px, red);
+    .box(3px, #ccc);
     .height(3);
     max-height: 66px;
     padding-top: (@magicNumber / 2) - 3;
