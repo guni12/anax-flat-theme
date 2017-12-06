@@ -2,48 +2,35 @@
 * Anax Flat theme.
 */
 @import url(base.less);
-@import url("https://fonts.googleapis.com/css?family=Della+Respira|Tangerine:400,700|Tillana|Rancho&effect=shadow-multiple|Inconsolata:700|Montserrat:400,400i");
 
-@light: #b5cf85;
-@bcol: #364518;
-@blue: #a744c5;
-@dark: #292e1e;
-@navbarItemColor: #719232;
+@light: orange;
+@bcol: red;
+@blue: lightblue;
+@dark: lightgreen;
+@navbarItemColor: #bc33bf;
 
 html {
-    color: @light;
-    background-color: @bcol;
-    font-family: "Montserrat", sans-serif;
-    font-style: italic;
+    background-image: url("../img/play.jpg");
+    background-repeat: repeat;
+    background-color: #364518;
+    color: @blue;
 }
 
-h1, h2, h3 {
-    font-family: "Della Respira", serif;
-    font-style: normal;
-    color: @navbarItemColor;
+.funtext {
+    background-color: magenta;
 }
-
-h4, h5, h6{
-    font-family: "Tangerine", serif;
-    font-weight: bold;
-    font-style: normal;
-    font-size: 1.5em;
-}
-
-.rm-desktop li {
-    font-family: "Tillana", sans-serif;
-    font-style: normal;
-}
-
-code {
-    font-family: "Inconsolata", monospace;
-}
-
 
 @navbarMenuButtonClickedColor: @navbarItemColor;
 
+.breadcrumb-list a{
+    color:  #f8f8f8;
+}
+.rm-navbar-top a{
+    color:  #f8f8f8;
+}
+
 .important {
-   color: @blue;
+   color: @bcol;
 }
 
 .img-typo-test {
@@ -54,10 +41,6 @@ code {
     border: 3px solid @light;
     overflow: auto;
     padding: 2em;   
-}
-
-.route-typography {
-    color: @bcol;
 }
 
 .site-header {
@@ -94,7 +77,7 @@ code {
 }
 
 ul#rm-menu.rm-clicked {
-    background-color: #601178;
+    background-color: @dark;
     a {
         color: @light;
     }
@@ -105,8 +88,6 @@ a {
 }
 
 ul#rm-desktop {
-    font-family: "Tillana", sans-serif;
-    font-style: normal;
     li.selected {
         a {
             color: @blue;
@@ -118,3 +99,5 @@ ul#rm-desktop {
 }
 
 @navbarItemSelectedColor: @light;
+
+
