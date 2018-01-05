@@ -1,0 +1,49 @@
+/** 
+* Breadcrumb - flash
+*/
+
+
+.flash-wrap {
+    .column(12);
+    height: @magicNumber * 3;
+    img {
+        width: 100%;
+        height: @magicNumber * 3;
+        display: block;
+    }
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+
+.outer-wrap-flash {
+    background-color: @white;
+    height: @magicNumber * 3;
+}
+
+.flash-wrap:after {
+    content: "";
+    font-size: 0;
+}
+
+
+.outer-wrap-breadcrumb, .breadcrumb-wrap, .breadcrumb-list ul {
+    .column(@columns);
+    height: 0;
+    margin: auto;
+    li { 
+        list-style-type: none;
+        height: 0;
+        padding-left: 2em;
+        a {            
+            color: white;
+            position: relative;
+            top: -@magicNumber;
+        }
+    }
+}
+
+.breadcrumb-list ul {
+    display: inline-flex;
+}

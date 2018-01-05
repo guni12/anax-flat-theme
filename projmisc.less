@@ -1,0 +1,164 @@
+/** 
+* Misc
+*/
+
+.clock, .clocktext {
+    display: none;
+}
+
+
+
+.imblog, .selector {
+    display: block;
+    position: relative;
+    padding-top: @magicNumber;
+    padding-bottom: @magicNumber * 4;   
+}
+
+.base, .custom {
+    display: block;
+    position: relative;
+    padding-bottom: @magicNumber;
+}
+
+
+.basetext, .bloggtext, .customtext, .selectortext {
+    visibility: hidden;
+    width: @magicNumber * 5;
+    background-color: @white;
+    color: @black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 10%;
+}
+
+.base:hover .basetext {
+    visibility: visible;
+}
+
+.imblog:hover .bloggtext {
+    visibility: visible;
+}
+
+.custom:hover .customtext {
+    visibility: visible;
+}
+
+.selector:hover .selectortext {
+    visibility: visible;
+}
+
+.route-theme-selector {
+    .site-logo-text-icon {
+        display: none;
+    }
+}
+
+a#rm-menu-button.rm-clicked, .mobile {
+    color: white;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+.article {
+    width: 100%;
+}
+
+
+.colbox {
+    height: 50px;
+    width: 50px;
+    border: 0.5px solid black;
+    padding: 1%;
+    margin: 1%;
+    float: left;
+}
+
+
+.base1 {
+    background-color: @white;
+}
+
+.base2 {
+    background-color: @black;
+}
+
+.base3 {
+    background-color: @gray;
+}
+
+
+.custom1 {
+    background-color: @green;
+}
+
+.custom2 {
+    background-color: @blue;
+}
+
+.custom3 {
+    background-color: @red;
+}
+
+.custom4 {
+    background-color: @mild;
+}
+
+.custom5 {
+    background-color: @blackboard;
+}
+
+.custom6 {
+    background-color: @dark;
+}
+
+
+.alt1 {
+    background-color: @yellow;
+}
+
+.alt5 {
+    background-color: @altgrey;
+}
+
+.alt3 {
+    background-color: @alttext;
+}
+
+.alt4 {
+    background-color: @dark;
+}
+
+.alt2 {
+    background-color: @purple;
+}
+
+.alt6 {
+    background-color: @softgreen;
+}
+
+.fontopen {
+    font-family: "Open Sans", sans-serif;
+}
+
+.fontindie {
+    font-family: 'Indie Flower', cursive;
+}
+
+.fontoswald {
+    font-family: "Oswald", sans-serif;
+}
+
+.fontpoppins {
+    font-family: "Poppins", sans-serif;
+}
+

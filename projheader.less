@@ -1,0 +1,204 @@
+/** 
+* Header - navbar
+*/
+
+@navbarItemColor: @black;
+@maxButtonFontSize: 2em;
+
+.outer-wrap-header {
+    background-color: @white;
+}
+
+.home:before {
+    font-family: @fontFamilyBody;
+    content: "Hem";
+    font-style: normal;
+    color: @black;
+    font-size: 1.7em;
+    font-weight: 700;
+    padding-right: 0.5em;
+    position: relative;
+    top: @magicNumber / 2;
+}
+
+.theme:before {
+    font-family: @fontFamilyBody;
+    content: "Teman";
+    font-style: normal;
+    color: @black;
+    font-size: 1.7em;
+    font-weight: 700;
+    padding-right: 0.5em;
+    position: relative;
+    top: @magicNumber / 2;
+}
+
+.about:before {
+    font-family: @fontFamilyBody;
+    content: "Om";
+    font-style: normal;
+    color: @black;
+    font-size: 1.7em;
+    font-weight: 700;
+    padding-right: 0.5em;
+    position: relative;
+    top: @magicNumber / 2;
+}
+
+.blogg:before {
+    font-family: @fontFamilyBody;
+    content: "Blogg";
+    font-style: normal;
+    color: @black;
+    font-size: 1.7em;
+    font-weight: 700;
+    padding-right: 0.5em;
+    position: relative;
+    top: @magicNumber / 2;
+}
+
+.theme-selector:before {
+    font-family: @fontFamilyBody;
+    content: "Välj";
+    font-style: normal;
+    color: @black;
+    font-size: 1.7em;
+    font-weight: 700;
+    padding-right: 0.5em;
+    position: relative;
+    top: @magicNumber / 2;
+}
+
+.selected:before {
+    color: @gray;
+}
+
+li.selected-parent:before {
+    color: @gray;
+}
+
+.rm-navbar-top, .rm-desktop{
+    height: inherit;
+    top: -@magicNumber;
+    li {
+        height: inherit;
+        a {
+            position: relative;
+            top: -@magicNumber;
+        }
+    }
+}
+
+.rm-navbar-max {
+    li {
+        box-shadow: none;
+        a {
+            position: relative;
+            top: -@magicNumber;
+            font-size: 1.5em;
+        }
+    }    
+}
+
+
+// Size of max navbar button
+.rm-button .rm-max .rm-small {
+    font-size: @maxButtonFontSize;
+    color: @navbarItemColor;
+}
+
+// Style navbar
+.rm-desktop li {
+    color: @navbarItemColor;
+}
+
+.rm-clicked .rm-mobile {
+    margin-top: 0;
+    a {
+        color: @white;
+    }
+}
+
+
+button .rm-clicked {
+    color: @white;
+}
+
+
+li .mobile {
+    background-color: @black;
+    font-family: 'Open Sans', sans-serif;
+    border-left: none;
+    border-right: none;
+    font-size: 1.3em;
+    color: @white;
+    a {
+        color: @white;
+    }
+}
+
+li .mobile .mobile-home{
+    border-top: none;
+}
+
+li .mobile .mobile-selector{
+    border-bottom: none;
+}
+
+a #rm-menu-button, .mobile {
+    color: @black;
+}
+
+.selected .mobile a {
+    color: @gray;
+}
+
+
+
+.site-header {
+    display: flex;
+    flex-flow: row wrap;
+    height: 3 * @magicNumber;
+    .column(@columns);
+    min-height: @site-height;
+    background-color: @white;
+    .site-logo-text {
+        .column(@columns / 6);
+        font-size: 1.3em;
+        height: inherit;
+        a {
+            color: @black;
+            text-decoration: none;
+        }
+        img {
+            position: relative;
+            top: @magicNumber / 2;
+        }
+    }
+    .navbar2 {
+        .column((@columns / 3) * 2);
+        height: inherit;
+    }
+    .profile {
+        .column(@columns / 6);
+        height: inherit;
+    }
+}
+
+
+i.fa.fa-bars, i.fa-times.rm-button-face-2 {
+    font-style: normal;
+}
+
+i.fa.fa-facebook-square, i.fa.fa-twitter-square, i.fa.fa-linkedin-square, i.fa.fa-google-plus-square {
+    font-style: normal;
+}
+
+.profile {
+    .rm-swipe-right {
+        background-color: "";
+        ul {
+            list-style-type: none;
+        }
+    }
+}

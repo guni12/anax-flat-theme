@@ -1,0 +1,82 @@
+/** 
+* Proj base theme.
+*/
+
+@white: white;
+@black: black;
+@gray: gray;
+
+
+@blue: #A3C1DB;
+@red: #FF6634;
+@green: #A0CDB9;
+@dark: #474747;
+@mild: #FBF8F3;
+@blackboard: #364518;
+
+@yellow: #FFF9D9;
+@altgrey: #f8f8f8;
+@softgreen: #9CC54B;
+@alttext: @blackboard;
+@purple: #a244a3;
+
+@fontFamilyBody: "Open Sans", sans-serif;
+@vgridImage: "../img/grid/grid940x12x60x20-nomargin.png";
+@hgridImage: "../img/grid/horisontal-grid-24.png";
+
+
+
+html {
+    background-color: @white;
+    font-family: @fontFamilyBody;
+}
+
+
+body {
+    background-color: @white;
+    color: @black;
+}
+
+
+.wrap-all {
+    background-color: @white;
+    margin: 0 auto;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    a {
+        text-decoration: none;
+    }
+    h1, h2 {
+        border-bottom: none;
+        margin-bottom: 24px;
+    }
+    p {
+        font-size: 1.25em;
+        line-height: 2.4;
+    }
+    border: none;
+    border-bottom: none;
+    margin-top: 0;
+}
+
+.outer-wrap-main {
+    margin-bottom: @magicNumber;
+}
+
+
+.inner-wrap {
+    @gridWidth: 1200px;
+    .grid(@gridWidth);
+    background-color: @white;
+    a {
+        color: @gray;
+    }
+    html.vgrid & {
+        .showGrid(@gridWidth, @vgridImage);
+    }
+}
+
+
+.row {
+    .row();
+}

@@ -1,0 +1,64 @@
+@import url(proj.less);
+@import url(modules/typography-mixins.less);
+@import url(modules/typography-defaults.less);
+@import url(modules/typography-sizes.less);
+
+@fontFamilyBody: 'Lato',Arial,sans-serif;
+@fontFamilyMonospace: monospace;
+@fontFamilyHeadings: @fontFamilyBody;
+
+@magicNumber: 24px;
+
+@fontSizeH1: 2.875em; 
+@fontSizeH2: 2.375em;
+@fontSizeH3: 1.875em;
+@fontSizeH4: 1.375em;
+@fontSizeH5: 1.25em;
+@fontSizeH6: 1em;
+//@fontSizeH6: 0.875em;
+
+@hgridImage: "../img/grid/horisontal-grid-24.png";
+
+
+////////////////////////////////////////////////////////////////////////
+
+
+
+.wrap-all {
+    .font(@fontSizeBody, @fontFamilyBody);
+    font-weight: 300;
+    .typographyTextElements();
+    .typographyHeadings();
+    .typographyCodeElements();
+    .typographyListElements();
+    .typographyTableElements();
+    .typographyOtherElements();
+    .box();
+    .border-bottom();
+
+    p {
+        font-size: 1.25em;
+        line-height: 2.4;
+    }
+
+    h1 {
+        //margin-bottom: @magicNumber * 1.2;
+    }
+
+    html.hgrid & {
+        background-color: transparent;
+        background-image: url(@hgridImage);
+
+        .inner-wrap, .site-header, .outer-wrap, .outer-wrap-header, .block.toc, .blog-toc {
+            background-color: transparent;
+        }
+        .block.toc, .blog-toc {
+            h4, p, a {
+                color: black;
+            }
+        }
+    }
+}
+
+
+@colorH1BorderBottom: transparent;

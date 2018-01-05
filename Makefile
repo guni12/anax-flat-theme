@@ -39,7 +39,7 @@ VENDORBIN 	= vendor/bin
 NPMBIN		= node_modules/.bin
 
 # LESS and CSS
-LESS 		 	= style.less base.less light.less dark.less triad.less color.less tinycolor.less typo.less fun.less photo.less line.less motion.less balance.less moremotion.less bad.less
+LESS 		 	= proj.less customer.less alt.less style.less base.less light.less dark.less triad.less color.less tinycolor.less typo.less fun.less photo.less line.less motion.less balance.less moremotion.less bad.less
 LESS_MODULES	= modules/
 LESS_OPTIONS 	= --strict-imports --include-path=$(LESS_MODULES)
 CSSLINT_OPTIONS = --quiet
